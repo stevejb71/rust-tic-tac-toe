@@ -1,0 +1,8 @@
+[package]
+name = "rust-tic-tac-toe"
+version = "0.1.0"
+authors = ["Steve"]
+
+[dependencies]
+sdl2 = "0.11"
+sdl2_image = "0.5"
