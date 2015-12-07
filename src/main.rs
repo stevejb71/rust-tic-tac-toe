@@ -24,9 +24,9 @@ fn main() {
     renderer.set_draw_color(Color::RGB(0, 0, 0));
     renderer.clear();
 
-    let mut board_view = BoardView {cross: &render_texture_for_cross(&mut renderer), nought: &render_texture_for_nought(&mut renderer)};
+    let board_view = BoardView {cross: &render_texture_for_cross(&mut renderer), nought: &render_texture_for_nought(&mut renderer)};
     let mut board = Board::new();
-    let computer_move = play(&board).unwrap();
+    let computer_move = play(&board, Square::Cross).unwrap();
     board.squares[computer_move] = Square::Cross;
     draw_board(&board_view, &mut renderer, &board);
     renderer.present();
@@ -39,7 +39,7 @@ fn main() {
                 if board.squares[index] == Square::Empty {
                     board.squares[index] = Square::Nought;
 
-                    let computer_move = play(&board).unwrap();
+                    let computer_move = play(&board, Square::Cross).unwrap();
                     board.squares[computer_move] = Square::Cross;
                     draw_board(&board_view, &mut renderer, &board);
                     renderer.present();
